@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LoadDataExample.Views.QuestionPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModels="clr-namespace:LoadDataExample.ViewModels"
+    Title="מסך שאלת טריוייה"
+    x:DataType="viewModels:QuestionPageViewModel">
+
+
+    <RefreshView
+        Margin="15"
+        Command="{Binding RefreshCommand}"
+        IsRefreshing="{Binding IsRefreshing}">
+        <ScrollView>
+            <VerticalStackLayout Margin="15">
+                <Label
+                    HorizontalOptions="Center"
+                    Text="{Binding RandomQuestion.QuestionText}"
+                    VerticalOptions="Center" />
+                <Border>
+                    <Label Text="{Binding RandomQuestion.QuestionAnswer1Text}" />
+                </Border>
+                <Border>
+                    <Label Text="{Binding RandomQuestion.QuestionAnswer2Text}" />
+                </Border>
+                <Border>
+                    <Label Text="{Binding RandomQuestion.QuestionAnswer3Text}" />
+                </Border>
+                <Border>
+                    <Label Text="{Binding RandomQuestion.QuestionAnswer4Text}" />
+                </Border>
+                <Label
+                    FontSize="Large"
+                    Text="{Binding ErrorMessage}"
+                    TextColor="Red" />
+                <Button Command="{Binding RefreshCommand}" Text="שאלה הבאה" />
+            </VerticalStackLayout>
+        </ScrollView>
+    </RefreshView>
+
+</ContentPage>
