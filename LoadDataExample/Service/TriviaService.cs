@@ -11,7 +11,7 @@ namespace LoadDataExample.Service
     public class TriviaService
     {
         private HttpClient client;
-        private static string URL = @"https://trivia.runasp.net/TriviaApi/";
+        private static string URL = @"https://zqzqslks-7128.euw.devtunnels.ms/TriviaApi/";
         private JsonSerializerOptions options;
         public TriviaService()
         {

@@ -20,11 +20,11 @@ namespace LoadDataExample.ViewModels
         public bool IsRefreshing { get => isRefreshing; set { isRefreshing = value; OnPropertyChange(); } }
         public Question RandomQuestion { get => randomQuestion; set { randomQuestion = value; OnPropertyChange(); } }
         public ICommand RefreshCommand {  get; protected set; }
-        public QuestionPageViewModel( TriviaService service) 
+        public   QuestionPageViewModel( TriviaService service) 
         {
             IsRefreshing = true ;
             this.service=service;
-            LoadQuestion().Await(HandleSuccess,HandleError);
+          LoadQuestion().Awaiter(HandleSuccess,HandleError);
            RefreshCommand = new Command(async () => await Refresh());
             IsRefreshing = false;
 
@@ -40,7 +40,7 @@ namespace LoadDataExample.ViewModels
             Shell.Current.DisplayAlert("הכל עודכן", "הכל בסדר", "אישור");
         }
 
-        private async Task LoadQuestion()
+        public async Task LoadQuestion()
         {
             
                 RandomQuestion = await service.GetQuestion();

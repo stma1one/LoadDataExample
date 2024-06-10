@@ -24,17 +24,20 @@ namespace LoadDataExample
         /// <param name="task">המשימה שיש להפעיל</param>
         /// <param name="completedCallback">הפעולה שיש להפעיל במקרה של הצלחה</param>
         /// <param name="failedCallBack">פעולה שיש להפעיל במקרה של כשלון</param>
-        public async static  void  Await(this Task task,Action completedCallback=null, Action<Exception> failedCallBack=null)
+        public async static void Awaiter( this Task task,Action successcallback=null,Action<Exception> failureCallback=null )
         {
             try
             {
                 await task;
-                completedCallback?.Invoke();
+                successcallback?.Invoke();
+
             }
-            catch (Exception ex)
+            catch (Exception ex) 
             {
-                failedCallBack?.Invoke(ex);
+                failureCallback?.Invoke( ex );
             }
+
+
         }
     }
 }
